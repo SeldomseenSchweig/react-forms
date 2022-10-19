@@ -38,14 +38,15 @@ const NewItemForm =({addItem})=>{
             value={formData.name}
             onChange={handleChange}
             />
-                    <label htmlFor='quantity'> Product Name</label>
+            <label htmlFor='quantity'> Quantity {formData.quantity}</label>
             <input 
-            id='quantity'
+            type="range"
             name='quantity'
-            type='quantity'
-            placeholder='quantity'
-            value={formData.quantity}
             onChange={handleChange}
+            value={formData.quantity}
+            id="quantity"
+            min="1" 
+            max="10"
             />
           <button>Submit</button>  
         </form>

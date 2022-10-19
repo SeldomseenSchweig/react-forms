@@ -1,4 +1,3 @@
-import { randomUUID } from 'crypto';
 import React, {useState} from 'react';
 import Item from './item';
 import NewItemForm from './NewItemForm';
@@ -14,7 +13,7 @@ const ShoppingList =()=>{
     ]
     const [items, setItems] = useState(INITIAL_STATE)
     const addItem = (newItem)=>{
-        setItems(items =>([...items,{...newItemid, id:uuid()} ]))
+        setItems(items =>([...items,{...newItem, id:uuid()} ]))
     }
 
     return (
