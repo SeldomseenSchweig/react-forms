@@ -13,8 +13,8 @@ const ShoppingList =()=>{
         {id:uuid(),name:"Apple", quantity:5}
     ]
     const [items, setItems] = useState(INITIAL_STATE)
-    const addItem = (name, quantity)=>{
-        setItems(items =>([...items,{id:uuid(),name,quantity} ]))
+    const addItem = (newItem)=>{
+        setItems(items =>([...items,{...newItemid, id:uuid()} ]))
     }
 
     return (
