@@ -1,19 +1,30 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import ShoppingList from "./ShoppingList";
+import '@testing-library/jest-dom/extend-expect';
 
-it("renders without crashing", function (){
+
+test("renders without crashing", function (){
 
     render(<ShoppingList />);
 });
 
-it("matches snapshot", function () {
+test("matches snapshot", function () {
     const {asFragment} = render(<ShoppingList />)
     expect (asFragment()).toMatchSnapshot();
 });
 
-it("should add new item", function(){
+test("should add new item", ()=>{
 
-    const {queryByText} = render(<ShoppingList />)
-    expect(queryByText('Product Name: Chocolate Milk')).not.toBeInTheDocument();
+    const {queryByText, getByLabelText} = render(<ShoppingList />)
+    const input = getByLabelText('Product Name')
+    const button = queryByText('Submit')
+    expect(queryByText('Product Name: Peanut Butter')).not.toBeInTheDocument();
+    fireEvent.change(input,{target:{value: "Peanut Butter"}});
+    fireEvent.click(button);
+    expect(queryByText('Product Name: Peanut Butter')).toBeInTheDocument();
+
+
+
+
 })
